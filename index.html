@@ -3,735 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Victor Rodrigo Leite - Engenheiro de Dados & Cientista de Dados</title>
+    <title>Victor Rodrigo Leite - Data Analyst & Data Science | AI</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anybody:wght@300;400;600;700&family=Newsreader:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --bg-primary: #0a0b0e;
-            --bg-secondary: #12141a;
-            --bg-card: #1a1d26;
-            --text-primary: #e8eaed;
-            --text-secondary: #9aa0a8;
-            --accent: #4ac9b8;
-            --accent-dim: #2a6f66;
-            --border: #252932;
-            --gradient-start: #4ac9b8;
-            --gradient-end: #2563eb;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Newsreader', serif;
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            line-height: 1.7;
-            overflow-x: hidden;
-        }
-
-        /* Navbar */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            padding: 1.5rem 2rem;
-            background: rgba(10, 11, 14, 0.8);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border);
-            transition: all 0.3s ease;
-        }
-
-        nav.scrolled {
-            padding: 1rem 2rem;
-            background: rgba(10, 11, 14, 0.95);
-        }
-
-        .nav-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .nav-logo {
-            font-family: 'Anybody', sans-serif;
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            text-decoration: none;
-            letter-spacing: -0.02em;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2.5rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 0.95rem;
-            font-family: 'Anybody', sans-serif;
-            transition: color 0.3s ease;
-            position: relative;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--accent);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--accent);
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 8rem 2rem 4rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -30%;
-            width: 80%;
-            height: 150%;
-            background: radial-gradient(circle, rgba(74, 201, 184, 0.08) 0%, transparent 70%);
-            pointer-events: none;
-            animation: floatGlow 20s ease-in-out infinite;
-        }
-
-        @keyframes floatGlow {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(-10%, 5%) scale(1.1); }
-        }
-
-        .hero-content {
-            max-width: 1400px;
-            width: 100%;
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 3rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero-text h1 {
-            font-family: 'Anybody', sans-serif;
-            font-size: clamp(2.5rem, 7vw, 5rem);
-            font-weight: 700;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            letter-spacing: -0.03em;
-            background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            opacity: 0;
-            animation: fadeInUp 0.8s ease forwards;
-        }
-
-        .hero-text .subtitle {
-            font-size: clamp(1.3rem, 3vw, 1.8rem);
-            color: var(--accent);
-            font-weight: 300;
-            margin-bottom: 1.5rem;
-            font-family: 'Anybody', sans-serif;
-            opacity: 0;
-            animation: fadeInUp 0.8s ease 0.2s forwards;
-        }
-
-        .hero-text .description {
-            font-size: 1.15rem;
-            color: var(--text-secondary);
-            max-width: 700px;
-            margin-bottom: 3rem;
-            line-height: 1.8;
-            opacity: 0;
-            animation: fadeInUp 0.8s ease 0.4s forwards;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-            opacity: 0;
-            animation: fadeInUp 0.8s ease 0.6s forwards;
-        }
-
-        .btn {
-            padding: 1rem 2.5rem;
-            border-radius: 8px;
-            text-decoration: none;
-            font-family: 'Anybody', sans-serif;
-            font-weight: 600;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn-primary {
-            background: var(--accent);
-            color: var(--bg-primary);
-        }
-
-        .btn-primary::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            transition: width 0.6s ease, height 0.6s ease;
-        }
-
-        .btn-primary:hover::before {
-            width: 300px;
-            height: 300px;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(74, 201, 184, 0.3);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            border-color: var(--border);
-            color: var(--text-primary);
-        }
-
-        .btn-secondary:hover {
-            border-color: var(--accent);
-            background: rgba(74, 201, 184, 0.1);
-            transform: translateY(-2px);
-        }
-
-        /* Container */
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        /* Section */
-        section {
-            padding: 8rem 0;
-            position: relative;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 5rem;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
-        }
-
-        .section-header.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .section-header h2 {
-            font-family: 'Anybody', sans-serif;
-            font-size: clamp(2.5rem, 5vw, 3.5rem);
-            font-weight: 700;
-            margin-bottom: 1rem;
-            letter-spacing: -0.02em;
-        }
-
-        .section-header p {
-            font-size: 1.15rem;
-            color: var(--text-secondary);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* About Section */
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 3rem;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
-        }
-
-        .about-content.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .about-text {
-            font-size: 1.15rem;
-            color: var(--text-secondary);
-            line-height: 1.9;
-        }
-
-        .about-text p {
-            margin-bottom: 1.5rem;
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .skill-category {
-            background: var(--bg-card);
-            padding: 2rem;
-            border-radius: 12px;
-            border: 1px solid var(--border);
-            transition: all 0.3s ease;
-        }
-
-        .skill-category:hover {
-            border-color: var(--accent);
-            transform: translateY(-4px);
-        }
-
-        .skill-category h3 {
-            font-family: 'Anybody', sans-serif;
-            font-size: 1.2rem;
-            margin-bottom: 1.5rem;
-            color: var(--accent);
-        }
-
-        .skill-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.75rem;
-        }
-
-        .tag {
-            background: var(--bg-secondary);
-            color: var(--text-secondary);
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
-            font-size: 0.9rem;
-            font-family: 'Anybody', sans-serif;
-            border: 1px solid var(--border);
-            transition: all 0.3s ease;
-        }
-
-        .tag:hover {
-            border-color: var(--accent);
-            color: var(--accent);
-            background: rgba(74, 201, 184, 0.1);
-        }
-
-        /* Projects Section */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-            gap: 2.5rem;
-        }
-
-        .project-card {
-            background: var(--bg-card);
-            border-radius: 16px;
-            padding: 2.5rem;
-            border: 1px solid var(--border);
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-            opacity: 0;
-            transform: translateY(30px);
-        }
-
-        .project-card.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.4s ease;
-        }
-
-        .project-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .project-card:hover {
-            transform: translateY(-8px);
-            border-color: var(--accent);
-            box-shadow: 0 12px 40px rgba(74, 201, 184, 0.15);
-        }
-
-        .project-icon {
-            width: 56px;
-            height: 56px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-            font-size: 1.8rem;
-            font-weight: 700;
-            font-family: 'Anybody', sans-serif;
-            background: rgba(74, 201, 184, 0.1);
-            color: var(--accent);
-            border: 1px solid var(--accent-dim);
-        }
-
-        .project-card.python .project-icon {
-            background: rgba(55, 118, 171, 0.15);
-            color: #3776ab;
-            border-color: rgba(55, 118, 171, 0.3);
-        }
-
-        .project-card.javascript .project-icon {
-            background: rgba(247, 223, 30, 0.15);
-            color: #f7df1e;
-            border-color: rgba(247, 223, 30, 0.3);
-        }
-
-        .project-card h3 {
-            font-family: 'Anybody', sans-serif;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--text-primary);
-        }
-
-        .project-card p {
-            color: var(--text-secondary);
-            line-height: 1.7;
-            margin-bottom: 1.5rem;
-            font-size: 1.05rem;
-        }
-
-        .project-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .tech-badge {
-            background: var(--bg-secondary);
-            color: var(--text-secondary);
-            padding: 0.4rem 0.9rem;
-            border-radius: 5px;
-            font-size: 0.85rem;
-            font-family: 'Anybody', sans-serif;
-            font-weight: 500;
-            border: 1px solid var(--border);
-        }
-
-        .project-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--accent);
-            text-decoration: none;
-            font-family: 'Anybody', sans-serif;
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: gap 0.3s ease;
-        }
-
-        .project-link:hover {
-            gap: 0.75rem;
-        }
-
-        .project-link svg {
-            width: 18px;
-            height: 18px;
-        }
-
-        /* Experience Section */
-        .experience-timeline {
-            max-width: 900px;
-            margin: 0 auto;
-            position: relative;
-        }
-
-        .experience-timeline::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: var(--border);
-        }
-
-        .experience-item {
-            position: relative;
-            padding-left: 3rem;
-            padding-bottom: 3rem;
-            opacity: 0;
-            transform: translateX(-30px);
-            transition: all 0.6s ease;
-        }
-
-        .experience-item.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .experience-item::before {
-            content: '';
-            position: absolute;
-            left: -6px;
-            top: 8px;
-            width: 14px;
-            height: 14px;
-            border-radius: 50%;
-            background: var(--accent);
-            border: 3px solid var(--bg-primary);
-            box-shadow: 0 0 0 4px var(--bg-card);
-        }
-
-        .experience-content {
-            background: var(--bg-card);
-            padding: 2rem;
-            border-radius: 12px;
-            border: 1px solid var(--border);
-            transition: all 0.3s ease;
-        }
-
-        .experience-content:hover {
-            border-color: var(--accent);
-            transform: translateX(8px);
-        }
-
-        .experience-header {
-            margin-bottom: 1rem;
-        }
-
-        .experience-header h3 {
-            font-family: 'Anybody', sans-serif;
-            font-size: 1.4rem;
-            color: var(--text-primary);
-            margin-bottom: 0.5rem;
-        }
-
-        .experience-meta {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            font-family: 'Anybody', sans-serif;
-        }
-
-        .experience-meta span {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .experience-description {
-            color: var(--text-secondary);
-            line-height: 1.8;
-            margin-top: 1rem;
-        }
-
-        /* Contact Section */
-        .contact-content {
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
-        }
-
-        .contact-content.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .contact-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-top: 3rem;
-            flex-wrap: wrap;
-        }
-
-        .contact-link {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 1.2rem 2.5rem;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            text-decoration: none;
-            color: var(--text-primary);
-            font-family: 'Anybody', sans-serif;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .contact-link:hover {
-            border-color: var(--accent);
-            background: rgba(74, 201, 184, 0.1);
-            transform: translateY(-4px);
-        }
-
-        .contact-link svg {
-            width: 24px;
-            height: 24px;
-            fill: var(--accent);
-        }
-
-        /* Footer */
-        footer {
-            background: var(--bg-secondary);
-            padding: 3rem 0;
-            text-align: center;
-            border-top: 1px solid var(--border);
-        }
-
-        footer p {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-        }
-
-        /* Mobile Menu */
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--text-primary);
-            font-size: 1.5rem;
-            cursor: pointer;
-            padding: 0.5rem;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .mobile-menu-btn {
-                display: block;
-            }
-
-            section {
-                padding: 5rem 0;
-            }
-
-            .hero {
-                padding: 6rem 2rem 4rem;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-            }
-
-            .btn {
-                text-align: center;
-                width: 100%;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .experience-timeline::before {
-                left: 0;
-            }
-
-            .experience-item {
-                padding-left: 2rem;
-            }
-
-            .contact-links {
-                flex-direction: column;
-            }
-
-            .contact-link {
-                width: 100%;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .nav-content {
-                padding: 0;
-            }
-
-            .container {
-                padding: 0 1.5rem;
-            }
-
-            .section-header {
-                margin-bottom: 3rem;
-            }
-
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .project-card {
-                padding: 2rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
     <!-- Navigation -->
@@ -740,8 +16,8 @@
             <a href="#" class="nav-logo">VRL</a>
             <ul class="nav-links">
                 <li><a href="#sobre">Sobre</a></li>
-                <li><a href="#projetos">Projetos</a></li>
                 <li><a href="#experiencia">Experiência</a></li>
+                <li><a href="#formacao">Formação</a></li>
                 <li><a href="#contato">Contato</a></li>
             </ul>
             <button class="mobile-menu-btn">☰</button>
@@ -753,16 +29,15 @@
         <div class="hero-content">
             <div class="hero-text">
                 <h1>Victor Rodrigo Leite</h1>
-                <p class="subtitle">Engenheiro de Dados & Cientista de Dados</p>
+                <p class="subtitle">Data Analyst at @ LabTelemed | Data Science & AI</p>
                 <p class="description">
-                    Especialista em análise de dados, sistemas distribuídos e engenharia de software. 
-                    Transformo dados complexos em insights acionáveis e construo soluções escaláveis 
-                    para problemas desafiadores em saúde pública e sistemas de alta disponibilidade.
+                    Engenheiro de Automação e Controle (UFPE) e Mestrando em Ciência da Computação (UFSC). 
+                    Especialista em tradução de requisitos de negócio, automatização de processos, engenharia e análise de dados.
                 </p>
                 <div class="hero-buttons">
-                    <a href="#projetos" class="btn btn-primary">Ver Projetos</a>
+                    <a href="#experiencia" class="btn btn-primary">Ver Experiência</a>
                     <a href="https://www.linkedin.com/in/vrodrigoleite/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">LinkedIn</a>
-                    <a href="https://github.com/vrodrigoleite" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">GitHub</a>
+                    <a href="mailto:vrodrigoleite@gmail.com" class="btn btn-secondary">Email</a>
                 </div>
             </div>
         </div>
@@ -773,138 +48,41 @@
         <div class="container">
             <div class="section-header">
                 <h2>Sobre Mim</h2>
-                <p>Engenheiro com paixão por dados e sistemas complexos</p>
+                <p>Engenheiro de Automação e Controle e Mestrando em Ciência da Computação</p>
             </div>
             <div class="about-content">
                 <div class="about-text">
                     <p>
-                        Sou um profissional com sólida experiência em ciência de dados e engenharia de software, 
-                        com foco especial em análise temporal, sistemas distribuídos e desenvolvimento de aplicações escaláveis.
+                        Engenheiro de Automação e Controle pela UFPE, me desenvolvi e qualifiquei nas áreas de Business Intelligence e Analytics. 
+                        Atualmente, desenvolvo pesquisa na área de Computação Distribuída e Inteligência Artificial, por meio do mestrado acadêmico do Programa de Pós-Graduação em Ciência da Computação da UFSC.
                     </p>
                     <p>
-                        Minha trajetória inclui projetos acadêmicos e práticos que envolvem desde a análise de grandes 
-                        volumes de dados do sistema de saúde brasileiro até a implementação de protocolos avançados de 
-                        replicação em sistemas distribuídos. Tenho experiência sólida em Python, JavaScript, e frameworks 
-                        modernos de desenvolvimento web.
+                        Profissional versátil e adaptativo. Possuo experiências multidisciplinares em diversos campos do conhecimento, como Energia Solar, Construção Civil e Telemedicina. 
+                        Trabalhei em ambientes de laboratórios de pesquisa, startups e multinacionais.
                     </p>
                 </div>
                 <div class="skills-grid">
                     <div class="skill-category">
-                        <h3>Ciência de Dados</h3>
+                        <h3>Competências</h3>
                         <div class="skill-tags">
-                            <span class="tag">Python</span>
-                            <span class="tag">Pandas</span>
-                            <span class="tag">NumPy</span>
-                            <span class="tag">Jupyter</span>
-                            <span class="tag">Análise Temporal</span>
-                            <span class="tag">Visualização</span>
+                            <span class="tag">Clickhouse</span>
+                            <span class="tag">Apache Druid</span>
                             <span class="tag">ETL</span>
+                            <span class="tag">Python</span>
+                            <span class="tag">SQL</span>
+                            <span class="tag">PostgreSQL</span>
+                            <span class="tag">MongoDB</span>
                         </div>
                     </div>
                     <div class="skill-category">
-                        <h3>Engenharia de Software</h3>
+                        <h3>Certificações</h3>
                         <div class="skill-tags">
-                            <span class="tag">JavaScript</span>
-                            <span class="tag">Next.js</span>
-                            <span class="tag">Node.js</span>
-                            <span class="tag">Git</span>
-                            <span class="tag">CI/CD</span>
-                            <span class="tag">Vercel</span>
+                            <span class="tag">Machine Learning Specialization</span>
+                            <span class="tag">Bootcamp Intensivo Python</span>
+                            <span class="tag">Docker para Analista e Engenheiro de Dados</span>
+                            <span class="tag">Introdução ao Git e GitHub</span>
                         </div>
                     </div>
-                    <div class="skill-category">
-                        <h3>Sistemas Distribuídos</h3>
-                        <div class="skill-tags">
-                            <span class="tag">Protocolos de Replicação</span>
-                            <span class="tag">Concorrência</span>
-                            <span class="tag">TCP/Sockets</span>
-                            <span class="tag">Arquitetura</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projetos">
-        <div class="container">
-            <div class="section-header">
-                <h2>Projetos</h2>
-                <p>Explorando dados e construindo sistemas</p>
-            </div>
-            <div class="projects-grid">
-                <!-- Project 1 -->
-                <div class="project-card python">
-                    <div class="project-icon">Py</div>
-                    <h3>Análise de Internações Hospitalares SUS</h3>
-                    <p>
-                        Análise temporal de 10 anos de dados do Sistema Único de Saúde em Santa Catarina. 
-                        Pipeline completo de ETL, exploração de tendências em morbidade, mortalidade e custos 
-                        hospitalares, incluindo o impacto estrutural da COVID-19.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-badge">Python</span>
-                        <span class="tech-badge">Pandas</span>
-                        <span class="tech-badge">PySUS</span>
-                        <span class="tech-badge">Jupyter</span>
-                        <span class="tech-badge">Análise Temporal</span>
-                        <span class="tech-badge">Parquet</span>
-                    </div>
-                    <a href="https://github.com/vrodrigoleite/ufsc-ine-content-detection-paper" target="_blank" rel="noopener noreferrer" class="project-link">
-                        Ver no GitHub
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M5 12h14M12 5l7 7-7 7"/>
-                        </svg>
-                    </a>
-                </div>
-
-                <!-- Project 2 -->
-                <div class="project-card python">
-                    <div class="project-icon">Py</div>
-                    <h3>Protocolo DUR - Replicação Distribuída</h3>
-                    <p>
-                        Implementação completa do protocolo Deferred Update Replication para garantir 
-                        consistência em sistemas distribuídos. Inclui cliente, servidor, sequenciador 
-                        e testes de concorrência com certificação de transações.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-badge">Python</span>
-                        <span class="tech-badge">TCP/Sockets</span>
-                        <span class="tech-badge">Sistemas Distribuídos</span>
-                        <span class="tech-badge">Concorrência</span>
-                        <span class="tech-badge">Replicação</span>
-                    </div>
-                    <a href="https://github.com/vrodrigoleite/ine-cd-trabalho-final" target="_blank" rel="noopener noreferrer" class="project-link">
-                        Ver no GitHub
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M5 12h14M12 5l7 7-7 7"/>
-                        </svg>
-                    </a>
-                </div>
-
-                <!-- Project 3 -->
-                <div class="project-card javascript">
-                    <div class="project-icon">JS</div>
-                    <h3>Clone TabNews - Engenharia de Software</h3>
-                    <p>
-                        Projeto full-stack desenvolvido como estudo prático de engenharia de software moderna. 
-                        Implementa boas práticas de desenvolvimento, integração contínua, deploy automatizado 
-                        e estrutura escalável com Next.js.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-badge">JavaScript</span>
-                        <span class="tech-badge">Next.js</span>
-                        <span class="tech-badge">Vercel</span>
-                        <span class="tech-badge">CI/CD</span>
-                        <span class="tech-badge">Git</span>
-                    </div>
-                    <a href="https://github.com/vrodrigoleite/clone-tabnews" target="_blank" rel="noopener noreferrer" class="project-link">
-                        Ver no GitHub
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M5 12h14M12 5l7 7-7 7"/>
-                        </svg>
-                    </a>
                 </div>
             </div>
         </div>
@@ -914,30 +92,118 @@
     <section id="experiencia" style="background: var(--bg-secondary);">
         <div class="container">
             <div class="section-header">
-                <h2>Experiência</h2>
-                <p>Trajetória profissional e acadêmica</p>
+                <h2>Experiência Profissional</h2>
+                <p>Minha trajetória no mercado e em pesquisa</p>
+            </div>
+            <div class="experience-timeline">
+                <!-- LabTelemed -->
+                <div class="experience-item">
+                    <div class="experience-content">
+                        <div class="experience-header">
+                            <h3>AI Researcher | Data Analyst</h3>
+                            <div class="experience-meta">
+                                <span>Laboratório de Telemedicina</span>
+                                <span>Maio 2025 - Presente</span>
+                            </div>
+                        </div>
+                        <p class="experience-description">
+                            Trabalho na interseção de análise de dados de saúde, IA e sistemas de telemedicina. 
+                            Desenvolvo pipelines analíticos, modelos baseados em SQL e dashboards de BI (Apache Superset). 
+                            Pesquisa em IA para saúde focada em aprendizado federado e visão computacional para interpretação automatizada de ECG.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Mesro Intelligence -->
+                <div class="experience-item">
+                    <div class="experience-content">
+                        <div class="experience-header">
+                            <h3>BI Consultant</h3>
+                            <div class="experience-meta">
+                                <span>Mesro Intelligence</span>
+                                <span>Agosto 2023 - Presente</span>
+                            </div>
+                        </div>
+                        <p class="experience-description">
+                            Responsável pelo desenvolvimento de produtos nas áreas de Business Intelligence, Analytics, 
+                            Robotic Process Automation (RPA) e Digital Process Automation (DPA).
+                        </p>
+                    </div>
+                </div>
+
+                <!-- WiiGroup -->
+                <div class="experience-item">
+                    <div class="experience-content">
+                        <div class="experience-header">
+                            <h3>Engineering Consultant | Power Platform</h3>
+                            <div class="experience-meta">
+                                <span>WiiGroup</span>
+                                <span>Outubro 2024 - Janeiro 2025</span>
+                            </div>
+                        </div>
+                        <p class="experience-description">
+                            Contribuição para o desenvolvimento do Sistema de Gestão da Qualidade como parte do projeto de 
+                            transformação digital do Departamento de Cultura e Turismo do Governo de Abu Dhabi (UAE).
+                        </p>
+                    </div>
+                </div>
+
+                <!-- TPF Engenharia -->
+                <div class="experience-item">
+                    <div class="experience-content">
+                        <div class="experience-header">
+                            <h3>Desenvolvedor Power Platform | Analytics</h3>
+                            <div class="experience-meta">
+                                <span>TPF Engenharia</span>
+                                <span>Março de 2023 - Fevereiro de 2024</span>
+                            </div>
+                        </div>
+                        <p class="experience-description">
+                            Desenvolvimento de soluções Power Platform, modelagem de bancos de dados relacionais e criação de relatórios de BI. 
+                            Aplicação de IA com AI Builder para processamento de manifestos e automação de assinatura documental em Python.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- INSOLE -->
+                <div class="experience-item">
+                    <div class="experience-content">
+                        <div class="experience-header">
+                            <h3>Desenvolvedor Power Platform | Analytics</h3>
+                            <div class="experience-meta">
+                                <span>INSOLE</span>
+                                <span>Agosto 2022 - Março 2023</span>
+                            </div>
+                        </div>
+                        <p class="experience-description">
+                            Integração de Revit com SQL Server, desenvolvimento de processos ETL com Pentaho e Python, 
+                            e automação RPA com Selenium e Playwright. Gestão de bancos de dados e níveis de permissão.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="formacao">
+        <div class="container">
+            <div class="section-header">
+                <h2>Formação Acadêmica</h2>
+                <p>Educação e pesquisa acadêmica</p>
             </div>
             <div class="experience-timeline">
                 <div class="experience-item">
                     <div class="experience-content">
                         <div class="experience-header">
-                            <h3>Cientista de Dados</h3>
+                            <h3>Mestrado em Ciências da Computação</h3>
                             <div class="experience-meta">
-                                <span>
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-                                        <line x1="16" y1="2" x2="16" y2="6"/>
-                                        <line x1="8" y1="2" x2="8" y2="6"/>
-                                        <line x1="3" y1="10" x2="21" y2="10"/>
-                                    </svg>
-                                    2024
-                                </span>
+                                <span>Universidade Federal de Santa Catarina</span>
+                                <span>Março 2025 - Março 2027 (Previsão)</span>
                             </div>
                         </div>
                         <p class="experience-description">
-                            Desenvolvimento de análises complexas de séries temporais aplicadas a dados de saúde pública. 
-                            Criação de pipelines de ETL automatizados e visualizações interativas para suporte à tomada 
-                            de decisão estratégica.
+                            Foco em Computação Paralela e Distribuída.
                         </p>
                     </div>
                 </div>
@@ -945,46 +211,12 @@
                 <div class="experience-item">
                     <div class="experience-content">
                         <div class="experience-header">
-                            <h3>Engenheiro de Software</h3>
+                            <h3>Bacharelado em Engenharia de Automação e Controle</h3>
                             <div class="experience-meta">
-                                <span>
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-                                        <line x1="16" y1="2" x2="16" y2="6"/>
-                                        <line x1="8" y1="2" x2="8" y2="6"/>
-                                        <line x1="3" y1="10" x2="21" y2="10"/>
-                                    </svg>
-                                    2024
-                                </span>
+                                <span>Universidade Federal de Pernambuco</span>
+                                <span>Agosto 2016 - Outubro 2023</span>
                             </div>
                         </div>
-                        <p class="experience-description">
-                            Implementação de sistemas distribuídos com foco em alta disponibilidade e consistência de dados. 
-                            Desenvolvimento de protocolos de replicação e gestão de concorrência em ambientes críticos.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="experience-item">
-                    <div class="experience-content">
-                        <div class="experience-header">
-                            <h3>Desenvolvedor Full-Stack</h3>
-                            <div class="experience-meta">
-                                <span>
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-                                        <line x1="16" y1="2" x2="16" y2="6"/>
-                                        <line x1="8" y1="2" x2="8" y2="6"/>
-                                        <line x1="3" y1="10" x2="21" y2="10"/>
-                                    </svg>
-                                    2024
-                                </span>
-                            </div>
-                        </div>
-                        <p class="experience-description">
-                            Construção de aplicações web modernas com Next.js e práticas DevOps. Implementação de 
-                            CI/CD, automação de deploys e arquitetura escalável em cloud.
-                        </p>
                     </div>
                 </div>
             </div>
@@ -995,22 +227,16 @@
     <section id="contato">
         <div class="container">
             <div class="section-header">
-                <h2>Vamos Conversar</h2>
-                <p>Interessado em colaborar ou discutir projetos? Entre em contato!</p>
+                <h2>Contato</h2>
+                <p>Entre em contato para oportunidades ou colaborações</p>
             </div>
             <div class="contact-content">
                 <div class="contact-links">
-                    <a href="https://www.linkedin.com/in/vrodrigoleite/" target="_blank" rel="noopener noreferrer" class="contact-link">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                        </svg>
-                        LinkedIn
+                    <a href="mailto:vrodrigoleite@gmail.com" class="contact-link">
+                        Email: vrodrigoleite@gmail.com
                     </a>
-                    <a href="https://github.com/vrodrigoleite" target="_blank" rel="noopener noreferrer" class="contact-link">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                        </svg>
-                        GitHub
+                    <a href="https://www.linkedin.com/in/vrodrigoleite/" target="_blank" rel="noopener noreferrer" class="contact-link">
+                        LinkedIn: vrodrigoleite
                     </a>
                 </div>
             </div>
@@ -1020,51 +246,10 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2026 Victor Rodrigo Leite. Desenvolvido com dedicação.</p>
+            <p>&copy; 2026 Victor Rodrigo Leite. Perfil atualizado via Profile.pdf</p>
         </div>
     </footer>
 
-    <script>
-        // Navbar scroll effect
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-
-        // Intersection Observer for fade-in animations
-        const observerOptions = {
-            threshold: 0.15,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        // Observe all animated elements
-        document.querySelectorAll('.section-header, .about-content, .project-card, .experience-item, .contact-content').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Stagger project cards animation
-        const projectCards = document.querySelectorAll('.project-card');
-        projectCards.forEach((card, index) => {
-            card.style.transitionDelay = `${index * 0.1}s`;
-        });
-
-        // Stagger experience items animation
-        const experienceItems = document.querySelectorAll('.experience-item');
-        experienceItems.forEach((item, index) => {
-            item.style.transitionDelay = `${index * 0.15}s`;
-        });
-    </script>
+    <script src="assets/js/script.js"></script>
 </body>
 </html>
